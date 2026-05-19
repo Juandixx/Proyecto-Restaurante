@@ -1,6 +1,6 @@
 from django.db import models
 
-
+STOCK_MINIMO_GLOBAL = 10
 
 # USUARIO
 
@@ -49,7 +49,6 @@ class Producto(models.Model):
     descripcion = models.TextField(blank=True, null=True)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     stock_actual = models.IntegerField(default=0)
-    stock_minimo = models.IntegerField(default=0)
 
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
 

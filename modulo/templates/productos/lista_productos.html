@@ -1,0 +1,75 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}
+Productos
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between mb-4">
+
+    <h2>Lista de Productos</h2>
+
+    <a href="/productos/crear/"
+        class="btn btn-success">
+
+        Nuevo Producto
+
+    </a>
+
+</div>
+
+<table class="table table-bordered table-hover bg-white">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Stock Mínimo</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for producto in productos %}
+
+        <tr>
+
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.categoria.nombre }}</td>
+            <td>${{ producto.precio }}</td>
+            <td>{{ producto.stock_actual }}</td>
+
+            <td>
+
+                {% if producto.stock_actual <= producto.stock_minimo %}
+
+                    <span class="badge bg-danger">
+                        Stock Bajo
+                    </span>
+
+                {% else %}
+
+                    {{ producto.stock_minimo }}
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}
