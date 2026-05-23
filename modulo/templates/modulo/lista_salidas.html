@@ -1,0 +1,82 @@
+{% extends 'modulo/base.html' %}
+
+{% block title %}
+Salidas
+{% endblock %}
+
+{% block content %}
+
+<div class="products-page">
+
+    <div class="products-header">
+
+        <h1 class="page-title">
+            Salidas de Inventario
+        </h1>
+
+        <a href="{% url 'registrar_salida' %}"
+           class="create-product-btn">
+
+            Registrar Salida
+
+        </a>
+
+    </div>
+
+    <div class="products-card">
+
+        <table class="products-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Motivo</th>
+                    <th>Usuario</th>
+                    <th>Fecha</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for salida in salidas %}
+
+                <tr>
+
+                    <td>
+                        {{ salida.producto.nombre }}
+                    </td>
+
+                    <td>
+                        {{ salida.cantidad }}
+                    </td>
+
+                    <td>
+                        {{ salida.motivo }}
+                    </td>
+
+                    <td>
+                        {{ salida.usuario.username }}
+                    </td>
+
+                    <td>
+                        {{ salida.fecha }}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

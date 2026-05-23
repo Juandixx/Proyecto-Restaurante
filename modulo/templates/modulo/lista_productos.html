@@ -1,0 +1,66 @@
+{% extends 'modulo/base.html' %}
+
+{% block title %}
+Productos
+{% endblock %}
+
+{% block content %}
+
+<div class="products-page">
+
+    <div class="products-header">
+
+        <h1 class="page-title">
+            Productos
+        </h1>
+
+        <a href="/crear-producto/" class="create-product-btn">
+            Crear Producto
+        </a>
+
+    </div>
+
+    <div class="products-card">
+
+        <table class="products-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Categoría</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for producto in productos %}
+
+                <tr>
+
+                    <td>{{ producto.nombre }}</td>
+
+                    <td>${{ producto.precio }}</td>
+
+                    <td>{{ producto.stock_actual }}</td>
+
+                    <td>{{ producto.categoria.nombre }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

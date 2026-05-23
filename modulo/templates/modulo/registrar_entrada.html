@@ -1,0 +1,65 @@
+{% extends 'modulo/base.html' %}
+
+{% block title %}
+Registrar Entrada
+{% endblock %}
+
+{% block content %}
+
+<div class="page-wrapper">
+
+    <div class="custom-card">
+
+        <div class="card-header">
+
+            <h2>
+                Registrar Entrada
+            </h2>
+
+        </div>
+
+        <div class="card-content">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {{ formulario.as_p }}
+
+                {% if formulario.errors %}
+
+                <div class="form-error">
+
+                    {{ formulario.errors }}
+
+                </div>
+
+                {% endif %}
+
+                <div class="button-group">
+
+                    <button type="submit"
+                            class="save-btn">
+
+                        Registrar Entrada
+
+                    </button>
+
+                    <a href="{% url 'productos' %}"
+                       class="cancel-btn">
+
+                        Cancelar
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

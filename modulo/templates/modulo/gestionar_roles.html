@@ -1,0 +1,100 @@
+{% extends 'modulo/base.html' %}
+
+{% block title %}
+Gestionar Roles
+{% endblock %}
+
+{% block content %}
+
+<div class="products-page">
+
+    <div class="products-header">
+
+        <h1 class="page-title">
+            Gestionar Roles
+        </h1>
+
+    </div>
+
+    <div class="products-card">
+
+        <table class="products-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Usuario</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Acciones</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for usuario in usuarios %}
+
+                <tr>
+
+                    <td>
+                        {{ usuario.username }}
+                    </td>
+
+                    <td>
+                        {{ usuario.email }}
+                    </td>
+
+                    <td>
+                        {{ usuario.usuario.rol }}
+                    </td>
+
+                  <td>
+
+                    <div class="actions-group">
+
+                        {% if usuario.username != 'admin' and usuario != request.user %}
+
+                            <a href="{% url 'cambiar_rol' usuario.id %}"
+                            class="edit-btn">
+
+                                Cambiar Rol
+
+                            </a>
+
+                            <a href="{% url 'eliminar_usuario' usuario.id %}"
+                            class="delete-btn">
+
+                                Eliminar
+
+                            </a>
+
+                        {% else %}
+
+                            <span class="protected-user">
+
+                                Deshabilitado
+
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
