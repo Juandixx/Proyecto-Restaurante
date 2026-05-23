@@ -13,10 +13,12 @@ Productos
         <h1 class="page-title">
             Productos
         </h1>
-
+        
+        {% if user.usuario.rol == 'admin' %}
         <a href="/crear-producto/" class="create-product-btn">
             Crear Producto
         </a>
+        {% endif %}
 
     </div>
 
