@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.db.models import Sum
 
 
 STOCK_MINIMO_GLOBAL = 10
@@ -250,26 +251,54 @@ class EntradaProducto(models.Model):
         auto_now_add=True
     )
 
+    def actualizar_stock_producto(self, producto):
+        total_entradas = EntradaProducto.objects.filter(
+            producto=producto
+        ).aggregate(
+            total=Sum('cantidad')
+        )['total'] or 0
+
+        total_salidas = SalidaProducto.objects.filter(
+            producto=producto
+        ).aggregate(
+            total=Sum('cantidad')
+        )['total'] or 0
+
+        producto.stock_actual = total_entradas - total_salidas
+        producto.save()
+
     def save(self, *args, **kwargs):
 
-        if not self.pk:
+        producto_anterior = None
 
-            self.producto.stock_actual += self.cantidad
-
-            self.producto.save()
+        if self.pk:
+            anterior = EntradaProducto.objects.get(pk=self.pk)
+            producto_anterior = anterior.producto
 
         super().save(*args, **kwargs)
 
-    def __str__(self):
+        # recalcula producto actual
+        self.actualizar_stock_producto(self.producto)
 
+        # si cambió de producto, recalcular el viejo también
+        if producto_anterior and producto_anterior != self.producto:
+            self.actualizar_stock_producto(producto_anterior)
+
+    def delete(self, *args, **kwargs):
+
+        producto = self.producto
+
+        super().delete(*args, **kwargs)
+
+        self.actualizar_stock_producto(producto)
+
+    def __str__(self):
         return f"Entrada - {self.producto.nombre}"
 
     class Meta:
-
         verbose_name = "Entrada de Producto"
         verbose_name_plural = "Entradas de Productos"
-
-
+        
 # =========================
 # SALIDA DE PRODUCTO
 # =========================
@@ -301,9 +330,43 @@ class SalidaProducto(models.Model):
         auto_now_add=True
     )
 
+    def actualizar_stock_producto(self, producto):
+
+        total_entradas = EntradaProducto.objects.filter(
+            producto=producto
+        ).aggregate(
+            total=Sum('cantidad')
+        )['total'] or 0
+
+        total_salidas = SalidaProducto.objects.filter(
+            producto=producto
+        ).aggregate(
+            total=Sum('cantidad')
+        )['total'] or 0
+
+        producto.stock_actual = total_entradas - total_salidas
+
+        producto.save()
+
     def clean(self):
 
-        if self.cantidad > self.producto.stock_actual:
+        total_entradas = EntradaProducto.objects.filter(
+            producto=self.producto
+        ).aggregate(
+            total=Sum('cantidad')
+        )['total'] or 0
+
+        total_salidas = SalidaProducto.objects.filter(
+            producto=self.producto
+        ).exclude(
+            pk=self.pk
+        ).aggregate(
+            total=Sum('cantidad')
+        )['total'] or 0
+
+        stock_disponible = total_entradas - total_salidas
+
+        if self.cantidad > stock_disponible:
 
             raise ValidationError(
                 'No hay suficiente stock disponible.'
@@ -311,15 +374,33 @@ class SalidaProducto(models.Model):
 
     def save(self, *args, **kwargs):
 
+        producto_anterior = None
+
+        if self.pk:
+
+            anterior = SalidaProducto.objects.get(pk=self.pk)
+
+            producto_anterior = anterior.producto
+
         self.clean()
 
-        if not self.pk:
-
-            self.producto.stock_actual -= self.cantidad
-
-            self.producto.save()
-
         super().save(*args, **kwargs)
+
+        # recalcular producto actual
+        self.actualizar_stock_producto(self.producto)
+
+        # si cambió producto
+        if producto_anterior and producto_anterior != self.producto:
+
+            self.actualizar_stock_producto(producto_anterior)
+
+    def delete(self, *args, **kwargs):
+
+        producto = self.producto
+
+        super().delete(*args, **kwargs)
+
+        self.actualizar_stock_producto(producto)
 
     def __str__(self):
 
@@ -328,4 +409,5 @@ class SalidaProducto(models.Model):
     class Meta:
 
         verbose_name = "Salida de Producto"
+
         verbose_name_plural = "Salidas de Productos"

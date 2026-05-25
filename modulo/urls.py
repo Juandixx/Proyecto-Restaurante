@@ -121,4 +121,28 @@ urlpatterns = [
         name='entradas'
     ),
 
+    path(
+        'editar-entrada/<int:entrada_id>/',
+        views.editar_entrada,
+        name='editar_entrada'
+    ),
+
+    path(
+        'eliminar-entrada/<int:entrada_id>/',
+        views.eliminar_entrada,
+        name='eliminar_entrada'
+    ),
+
+    path(
+        'editar-salida/<int:salida_id>/',
+        views.editar_salida,
+        name='editar_salida'
+    ),
+
+    path(
+        'eliminar-salida/<int:salida_id>/',
+        views.eliminar_salida,
+        name='eliminar_salida'
+    ),
+
 ]

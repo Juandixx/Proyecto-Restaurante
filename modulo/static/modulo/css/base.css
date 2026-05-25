@@ -1330,3 +1330,18 @@ button:hover{
     font-size: 22px;
 
 }
+
+.back-btn {
+    background: #6b7280;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}

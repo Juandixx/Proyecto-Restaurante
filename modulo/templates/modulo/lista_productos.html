@@ -10,17 +10,28 @@ Productos
 
     <div class="products-header">
 
-        <h1 class="page-title">
-            Productos
-        </h1>
-        
-        {% if user.usuario.rol == 'admin' %}
-        <a href="/crear-producto/" class="create-product-btn">
-            Crear Producto
+    <h1 class="page-title">
+        Categorías
+    </h1>
+
+    <div class="actions-group">
+
+        <a href="{% url 'dashboard' %}"
+           class="back-btn">
+            Volver al inicio
+        </a>
+        {% if request.user.usuario.rol == 'admin' %}
+        <a href="{% url 'crear_producto' %}"
+           class="create-product-btn">
+            Añadir producto
         </a>
         {% endif %}
 
     </div>
+
+</div>
+
+</div>
 
     <div class="products-card">
 
@@ -31,7 +42,7 @@ Productos
                 <tr>
 
                     <th>Nombre</th>
-                    <th>Precio</th>
+                    <th>Precio C/U</th>
                     <th>Stock</th>
                     <th>Categoría</th>
 

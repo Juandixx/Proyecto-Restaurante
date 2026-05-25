@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto
 from .forms import ProductoForm
 from django.contrib.auth import login, logout
@@ -18,14 +18,18 @@ from .forms import LoginForm
 
 
 
+# =========================
 # INICIO
+# =========================
 
 def inicio(request):
 
     return render(request, 'modulo/index.html')
 
 
-# LISTA DE PRODUCTOS
+# =========================
+# LISTA PRODUCTOS
+# =========================
 
 def lista_productos(request):
 
@@ -39,8 +43,6 @@ def lista_productos(request):
         }
     )
 
-
-# CREAR PRODUCTO
 
 def crear_producto(request):
 
@@ -65,10 +67,6 @@ def crear_producto(request):
             'formulario': formulario
         }
     )
-
-# =========================
-# EDITAR PRODUCTO
-# =========================
 
 @login_required
 def editar_producto(request, producto_id):
@@ -108,10 +106,6 @@ def editar_producto(request, producto_id):
 
     )
 
-
-# =========================
-# ELIMINAR PRODUCTO
-# =========================
 
 @login_required
 def eliminar_producto(request, producto_id):
@@ -262,10 +256,6 @@ def gestionar_roles(request):
     )
 
 
-# =========================
-# CAMBIAR ROL
-# =========================
-
 @login_required
 def cambiar_rol(request, user_id):
 
@@ -275,12 +265,10 @@ def cambiar_rol(request, user_id):
 
     usuario = User.objects.get(id=user_id)
 
-    # NO CAMBIAR ADMIN PRINCIPAL
     if usuario.username == 'admin':
 
         return redirect('gestionar_roles')
 
-    # NO CAMBIARSE A SI MISMO
     if usuario == request.user:
 
         return redirect('gestionar_roles')
@@ -299,9 +287,6 @@ def cambiar_rol(request, user_id):
 
     return redirect('gestionar_roles')
 
-# =========================
-# ELIMINAR USUARIO
-# =========================
 
 @login_required
 def eliminar_usuario(request, user_id):
@@ -312,12 +297,10 @@ def eliminar_usuario(request, user_id):
 
     usuario = User.objects.get(id=user_id)
 
-    # NO ELIMINAR ADMIN PRINCIPAL
     if usuario.username == 'admin':
 
         return redirect('gestionar_roles')
 
-    # NO ELIMINARSE A SI MISMO
     if usuario == request.user:
 
         return redirect('gestionar_roles')
@@ -352,11 +335,6 @@ def lista_categorias(request):
 
     )
 
-
-# =========================
-# CREAR CATEGORIA
-# =========================
-
 @login_required
 def crear_categoria(request):
 
@@ -389,11 +367,6 @@ def crear_categoria(request):
         }
 
     )
-
-
-# =========================
-# EDITAR CATEGORIA
-# =========================
 
 @login_required
 def editar_categoria(request, categoria_id):
@@ -434,10 +407,6 @@ def editar_categoria(request, categoria_id):
     )
 
 
-# =========================
-# ELIMINAR CATEGORIA
-# =========================
-
 @login_required
 def eliminar_categoria(request, categoria_id):
 
@@ -477,10 +446,6 @@ def lista_proveedores(request):
     )
 
 
-# =========================
-# CREAR PROVEEDOR
-# =========================
-
 @login_required
 def crear_proveedor(request):
 
@@ -514,10 +479,6 @@ def crear_proveedor(request):
 
     )
 
-
-# =========================
-# EDITAR PROVEEDOR
-# =========================
 
 @login_required
 def editar_proveedor(request, proveedor_id):
@@ -558,10 +519,6 @@ def editar_proveedor(request, proveedor_id):
     )
 
 
-# =========================
-# ELIMINAR PROVEEDOR
-# =========================
-
 @login_required
 def eliminar_proveedor(request, proveedor_id):
 
@@ -598,7 +555,7 @@ def registrar_salida(request):
 
             salida.save()
 
-            return redirect('productos')
+            return redirect('salidas')
 
     else:
 
@@ -616,50 +573,55 @@ def registrar_salida(request):
 
     )
 
-# =========================
-# REGISTRAR ENTRADA
-# =========================
-
 @login_required
-def registrar_entrada(request):
+def editar_salida(request, salida_id):
 
-    if request.user.usuario.rol != 'admin':
-
+    if request.user.usuario.rol not in ['admin', 'empleado']:
         return redirect('dashboard')
+
+    salida = get_object_or_404(
+        SalidaProducto,
+        id=salida_id
+    )
 
     if request.method == 'POST':
 
-        formulario = EntradaProductoForm(request.POST)
+        formulario = SalidaProductoForm(
+            request.POST,
+            instance=salida
+        )
 
         if formulario.is_valid():
-
-            entrada = formulario.save(commit=False)
-
-            entrada.usuario = request.user
-
-            entrada.save()
-
-            return redirect('productos')
+            formulario.save()
+            return redirect('salidas')
 
     else:
-
-        formulario = EntradaProductoForm()
+        formulario = SalidaProductoForm(
+            instance=salida
+        )
 
     return render(
-
         request,
-
-        'modulo/registrar_entrada.html',
-
+        'modulo/editar_salida.html',
         {
             'formulario': formulario
         }
-
     )
 
-# =========================
-# LISTA SALIDAS
-# =========================
+@login_required
+def eliminar_salida(request, salida_id):
+
+    if request.user.usuario.rol != 'admin':
+        return redirect('dashboard')
+
+    salida = get_object_or_404(
+        SalidaProducto,
+        id=salida_id
+    )
+
+    salida.delete()
+
+    return redirect('salidas')
 
 @login_required
 def lista_salidas(request):
@@ -683,8 +645,88 @@ def lista_salidas(request):
     )
 
 # =========================
-# LISTA ENTRADAS
+# REGISTRAR ENTRADA
 # =========================
+
+@login_required
+def registrar_entrada(request):
+
+    if request.user.usuario.rol != 'admin':
+        return redirect('dashboard')
+
+    if request.method == 'POST':
+
+        formulario = EntradaProductoForm(request.POST)
+
+        if formulario.is_valid():
+
+            entrada = formulario.save(commit=False)
+            entrada.usuario = request.user
+            entrada.save()
+
+            return redirect('entradas')
+
+    else:
+        formulario = EntradaProductoForm()
+
+    return render(
+        request,
+        'modulo/registrar_entrada.html',
+        {
+            'formulario': formulario
+        }
+    )
+
+@login_required
+def editar_entrada(request, entrada_id):
+
+    if request.user.usuario.rol != 'admin':
+        return redirect('dashboard')
+
+    entrada = get_object_or_404(
+        EntradaProducto,
+        id=entrada_id
+    )
+
+    if request.method == 'POST':
+
+        formulario = EntradaProductoForm(
+            request.POST,
+            instance=entrada
+        )
+
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('entradas')
+
+    else:
+        formulario = EntradaProductoForm(
+            instance=entrada
+        )
+
+    return render(
+        request,
+        'modulo/editar_entrada.html',
+        {
+            'formulario': formulario
+        }
+    )
+
+@login_required
+def eliminar_entrada(request, entrada_id):
+
+    if request.user.usuario.rol != 'admin':
+        return redirect('dashboard')
+
+    entrada = get_object_or_404(
+        EntradaProducto,
+        id=entrada_id
+    )
+
+    entrada.delete()
+
+    return redirect('entradas')
+
 
 @login_required
 def lista_entradas(request):

@@ -14,12 +14,18 @@ Entradas
             Entradas de Inventario
         </h1>
 
-        <a href="{% url 'registrar_entrada' %}"
-           class="create-product-btn">
+        <div class="actions-group">
+            <a href="{% url 'dashboard' %}" class="back-btn">
+                Volver al inicio
+            </a>
 
-            Registrar Entrada
+            <a href="{% url 'registrar_entrada' %}"
+            class="create-product-btn">
 
-        </a>
+                Registrar Entrada
+
+            </a>
+        </div>
 
     </div>
 
@@ -37,6 +43,7 @@ Entradas
                     <th>Precio Compra</th>
                     <th>Usuario</th>
                     <th>Fecha</th>
+                    <th>Acciones</th>
 
                 </tr>
 
@@ -70,6 +77,27 @@ Entradas
 
                     <td>
                         {{ entrada.fecha }}
+                    </td>
+
+                    <td>
+                        <div class="actions-group">
+
+                            <a
+                                href="{% url 'editar_entrada' entrada.id %}"
+                                class="edit-btn"
+                            >
+                                Editar
+                            </a>
+
+                            <a
+                                href="{% url 'eliminar_entrada' entrada.id %}"
+                                class="delete-btn"
+                                onclick="return confirm('¿Seguro que deseas eliminar esta entrada?')"
+                            >
+                                Eliminar
+                            </a>
+
+                        </div>
                     </td>
 
                 </tr>
