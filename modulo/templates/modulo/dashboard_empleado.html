@@ -1,0 +1,25 @@
+{% extends 'modulo/base.html' %}
+
+{% block title %}
+Dashboard Empleado
+{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4">
+    Panel Empleado
+</h1>
+
+<div class="card shadow-sm p-4">
+
+    <h4>
+        Productos
+    </h4>
+
+    <a href="{% url 'productos' %}" class="btn btn-dark mt-3">
+        Ver Productos
+    </a>
+
+</div>
+
+{% endblock %}

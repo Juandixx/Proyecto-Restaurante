@@ -1,0 +1,54 @@
+{% extends 'modulo/base.html' %}
+
+{% block title %}
+Crear Categoría
+{% endblock %}
+
+{% block content %}
+
+<div class="page-wrapper">
+
+    <div class="custom-card">
+
+        <div class="card-header">
+
+            <h2>
+                Crear Categoría
+            </h2>
+
+        </div>
+
+        <div class="card-content">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {{ formulario.as_p }}
+
+                <div class="button-group">
+
+                    <button type="submit" class="save-btn">
+
+                        Guardar
+
+                    </button>
+
+                    <a href="{% url 'categorias' %}"
+                       class="cancel-btn">
+
+                        Cancelar
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

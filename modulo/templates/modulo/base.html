@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+            Inventario Restaurante
+        {% endblock %}
+    </title>
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="{% static 'modulo/css/base.css' %}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🍽 InventarioRest
+        </div>
+
+        {% if user.is_authenticated %}
+
+        <div class="nav-links">
+
+            <a href="{% url 'dashboard' %}">
+                Inicio
+            </a>
+
+            <a href="{% url 'productos' %}">
+                Productos
+            </a>
+
+            <a href="{% url 'salidas' %}"
+            class="nav-link-btn">
+
+                Salidas
+
+            </a>
+
+
+
+
+            {% if user.usuario.rol == 'admin' %}
+
+            <a href="{% url 'categorias' %}" class="nav-btn">
+                Categorías
+            </a>
+
+            <a href="{% url 'proveedores' %}" class="nav-link-btn">
+                Proveedores
+            </a>
+
+            <a href="{% url 'gestionar_roles' %}">
+                Gestionar Roles
+            </a>
+
+            <a href="{% url 'entradas' %}"
+            class="nav-link-btn">
+
+                Entradas
+
+            </a>
+
+            {% endif %}
+
+            <a href="{% url 'logout' %}" class="logout-btn">
+                Cerrar Sesión
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </nav>
+
+    <main class="main-container">
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+</body>
+
+</html>

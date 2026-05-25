@@ -1,0 +1,1229 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body{
+
+    font-family: 'Poppins', sans-serif;
+
+    background: #020617;
+
+    color: white;
+
+    min-height: 100vh;
+
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+
+    width: 100%;
+
+    background: #0f172a;
+
+    padding: 20px 50px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+}
+
+
+.logo{
+
+    font-size: 32px;
+
+    font-weight: 700;
+
+    color: white;
+
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+.nav-links{
+
+    display: flex;
+
+    gap: 15px;
+
+}
+
+
+.nav-links a{
+
+    text-decoration: none;
+
+    color: white;
+
+    background: #1e293b;
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    transition: 0.3s;
+
+    font-weight: 500;
+
+}
+
+
+.nav-links a:hover{
+
+    background: #2563eb;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================
+   BOTON LOGOUT
+========================= */
+
+.logout-btn{
+
+    background: #dc2626 !important;
+
+}
+
+
+.logout-btn:hover{
+
+    background: #ef4444 !important;
+
+}
+
+
+/* =========================
+   CONTENIDO
+========================= */
+
+.main-container{
+
+    padding: 40px;
+
+}
+
+
+/* =========================
+   TARJETAS
+========================= */
+
+.card{
+
+    background: #0f172a;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    margin-bottom: 25px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+}
+
+
+/* =========================
+   TITULOS
+========================= */
+
+h1{
+
+    font-size: 42px;
+
+    margin-bottom: 30px;
+
+}
+
+
+h2{
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================
+   BOTONES GENERALES
+========================= */
+
+button{
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 12px;
+
+    background: #2563eb;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+
+}
+
+
+button:hover{
+
+    background: #3b82f6;
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 768px){
+
+    .navbar{
+
+        flex-direction: column;
+
+        gap: 20px;
+
+        padding: 20px;
+
+    }
+
+    .nav-links{
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+    }
+
+}
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY AUTH
+========================= */
+
+.auth-body{
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #020617,
+            #0f172a,
+            #1e293b
+        );
+
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+/* =========================
+   CONTENEDOR
+========================= */
+
+.auth-container{
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.auth-card{
+
+    width: 100%;
+
+    max-width: 500px;
+
+    background: rgba(15, 23, 42, 0.95);
+
+    border-radius: 24px;
+
+    padding: 50px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.5);
+
+}
+
+
+/* =========================
+   TITULO
+========================= */
+
+.auth-title{
+
+    text-align: center;
+
+    font-size: 42px;
+
+    margin-bottom: 35px;
+
+    color: white;
+
+}
+
+
+/* =========================
+   FORMULARIOS
+========================= */
+
+.auth-card label{
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #cbd5e1;
+
+    font-weight: 500;
+
+}
+
+
+.auth-card input{
+
+    width: 100%;
+
+    padding: 14px 18px;
+
+    margin-bottom: 20px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: #0f172a;
+
+    color: white;
+
+    outline: none;
+
+    font-size: 15px;
+
+}
+
+
+.auth-card input:focus{
+
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 15px rgba(59,130,246,0.4);
+
+}
+
+
+/* =========================
+   BOTON
+========================= */
+
+.auth-btn{
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #3b82f6
+        );
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.auth-btn:hover{
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(59,130,246,0.4);
+
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+.auth-card a{
+
+    color: #60a5fa;
+
+    text-decoration: none;
+
+}
+
+
+.auth-card a:hover{
+
+    color: #93c5fd;
+
+}
+
+/* =========================
+   LOGIN WRAPPER
+========================= */
+
+.login-wrapper{
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.auth-subtitle{
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    margin-bottom: 30px;
+
+    font-size: 16px;
+
+}
+
+
+/* =========================
+   INPUT GROUP
+========================= */
+
+.input-group{
+
+    margin-bottom: 20px;
+
+}
+
+
+.input-group label{
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #cbd5e1;
+
+    font-weight: 500;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.auth-footer{
+
+    margin-top: 25px;
+
+    text-align: center;
+
+}
+
+/* =========================
+   INPUT PERSONALIZADO
+========================= */
+
+.auth-input{
+
+    width: 100%;
+
+    padding: 14px 18px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: #0f172a;
+
+    color: white;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+
+}
+
+
+.auth-input:focus{
+
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 15px rgba(59,130,246,0.4);
+
+}
+
+
+.auth-input::placeholder{
+
+    color: #94a3b8;
+
+}
+
+/* =========================
+   PAGE WRAPPER
+========================= */
+
+.page-wrapper{
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding-top: 40px;
+
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.custom-card{
+
+    width: 100%;
+
+    max-width: 700px;
+
+    background: #0f172a;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.4);
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.card-header{
+
+    background:
+        linear-gradient(
+            90deg,
+            #16a34a,
+            #22c55e
+        );
+
+    padding: 25px;
+
+}
+
+
+.card-header h2{
+
+    color: white;
+
+    margin: 0;
+
+    font-size: 28px;
+
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.card-content{
+
+    padding: 35px;
+
+}
+
+
+/* =========================
+   FORMULARIO
+========================= */
+
+.card-content p{
+
+    margin-bottom: 20px;
+
+}
+
+
+.card-content label{
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #cbd5e1;
+
+    font-weight: 500;
+
+}
+
+
+.card-content input,
+.card-content textarea,
+.card-content select{
+
+    width: 100%;
+
+    padding: 14px 18px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: #020617;
+
+    color: white;
+
+    outline: none;
+
+    font-size: 15px;
+
+}
+
+
+.card-content textarea{
+
+    min-height: 120px;
+
+    resize: vertical;
+
+}
+
+
+.card-content input:focus,
+.card-content textarea:focus,
+.card-content select:focus{
+
+    border-color: #22c55e;
+
+    box-shadow:
+        0 0 15px rgba(34,197,94,0.3);
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button-group{
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 30px;
+
+}
+
+
+.save-btn{
+
+    border: none;
+
+    padding: 14px 22px;
+
+    border-radius: 14px;
+
+    background: #16a34a;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.save-btn:hover{
+
+    background: #22c55e;
+
+    transform: translateY(-2px);
+
+}
+
+
+.cancel-btn{
+
+    text-decoration: none;
+
+    padding: 14px 22px;
+
+    border-radius: 14px;
+
+    background: #475569;
+
+    color: white;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+
+}
+
+
+.cancel-btn:hover{
+
+    background: #64748b;
+
+}
+
+/* =========================
+   PRODUCTS PAGE
+========================= */
+
+.products-page{
+
+    width: 100%;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.products-header{
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+
+}
+
+
+.page-title{
+
+    font-size: 40px;
+
+    color: white;
+
+}
+
+
+/* =========================
+   CREATE BUTTON
+========================= */
+
+.create-product-btn{
+
+    text-decoration: none;
+
+    background: #06b6d4;
+
+    color: white;
+
+    padding: 14px 22px;
+
+    border-radius: 14px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+
+}
+
+
+.create-product-btn:hover{
+
+    background: #0891b2;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================
+   CARD TABLE
+========================= */
+
+.products-card{
+
+    background: #0f172a;
+
+    border-radius: 24px;
+
+    padding: 25px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    overflow-x: auto;
+
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.products-table{
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+
+.products-table thead{
+
+    background: #1e293b;
+
+}
+
+
+.products-table th{
+
+    padding: 18px;
+
+    text-align: left;
+
+    color: #cbd5e1;
+
+    font-weight: 600;
+
+}
+
+
+.products-table td{
+
+    padding: 18px;
+
+    border-top: 1px solid rgba(255,255,255,0.05);
+
+    color: #f8fafc;
+
+}
+
+
+.products-table tbody tr{
+
+    transition: 0.3s;
+
+}
+
+
+.products-table tbody tr:hover{
+
+    background: rgba(255,255,255,0.03);
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 768px){
+
+    .products-header{
+
+        flex-direction: column;
+
+        gap: 20px;
+
+        align-items: flex-start;
+
+    }
+
+}
+
+/* =========================
+   DASHBOARD HERO
+========================= */
+
+.dashboard-hero{
+
+    background: #0f172a;
+
+    padding: 40px;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    margin-bottom: 35px;
+
+}
+
+
+/* =========================
+   TITLES
+========================= */
+
+.dashboard-title{
+
+    font-size: 48px;
+
+    margin-bottom: 15px;
+
+    color: white;
+
+}
+
+
+.dashboard-text{
+
+    color: #94a3b8;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================
+   STATS GRID
+========================= */
+
+.stats-grid{
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+
+}
+
+
+/* =========================
+   STAT CARD
+========================= */
+
+.stat-card{
+
+    background: #0f172a;
+
+    padding: 35px;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    transition: 0.3s;
+
+}
+
+
+.stat-card:hover{
+
+    transform: translateY(-4px);
+
+    border-color: rgba(59,130,246,0.4);
+
+}
+
+
+/* =========================
+   NUMBERS
+========================= */
+
+.stat-card h2{
+
+    font-size: 42px;
+
+    color: #3b82f6;
+
+    margin-bottom: 10px;
+
+}
+
+
+.stat-card span{
+
+    color: #cbd5e1;
+
+    font-size: 18px;
+
+}
+
+/* =========================
+   FORM ERRORS
+========================= */
+
+.form-error {
+
+    background: rgba(220, 38, 38, 0.12);
+
+    border: 1px solid rgba(239, 68, 68, 0.3);
+
+    color: #fca5a5;
+
+    padding: 14px 18px;
+
+    border-radius: 14px;
+
+    margin-top: 18px;
+
+    margin-bottom: 22px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================
+   PASSWORD HELP
+========================= */
+
+.password-help{
+
+    margin-top: 12px;
+
+    margin-bottom: 15px;
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.04);
+
+    border: 1px solid rgba(255,255,255,0.05);
+
+    color: #cbd5e1;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+.password-help ul{
+
+    margin-top: 10px;
+
+    padding-left: 20px;
+
+}
+
+
+.password-help li{
+
+    margin-bottom: 6px;
+
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.actions-group{
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+.edit-btn{
+
+    text-decoration: none;
+
+    background: #2563eb;
+
+    color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+
+}
+
+
+.edit-btn:hover{
+
+    background: #3b82f6;
+
+}
+
+
+.delete-btn{
+
+    text-decoration: none;
+
+    background: #dc2626;
+
+    color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+
+}
+
+
+.delete-btn:hover{
+
+    background: #ef4444;
+
+}
+
+/* =========================
+   PROTECTED USER
+========================= */
+
+.protected-user{
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+/* =========================
+   DJANGO ERRORLIST
+========================= */
+
+.errorlist {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 18px 0 22px 0;
+
+}
+
+.errorlist li {
+
+    background: rgba(220, 38, 38, 0.12);
+
+    border: 1px solid rgba(239, 68, 68, 0.3);
+
+    color: #fca5a5;
+
+    padding: 14px 18px;
+
+    border-radius: 14px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+}

@@ -1,0 +1,49 @@
+{% extends 'modulo/base.html' %}
+
+{% block title %}
+Dashboard Admin
+{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4">
+    Panel Administrador
+</h1>
+
+<div class="row g-4">
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm p-4">
+
+            <h4>
+                Productos
+            </h4>
+
+            <a href="{% url 'productos' %}" class="btn btn-dark mt-3">
+                Ver Productos
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm p-4">
+
+            <h4>
+                Crear Producto
+            </h4>
+
+            <a href="{% url 'crear_producto' %}" class="btn btn-success mt-3">
+                Crear
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

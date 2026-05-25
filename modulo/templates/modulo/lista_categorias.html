@@ -1,0 +1,90 @@
+{% extends 'modulo/base.html' %}
+
+{% block title %}
+Categorías
+{% endblock %}
+
+{% block content %}
+
+<div class="products-page">
+
+    <div class="products-header">
+
+        <h1 class="page-title">
+            Categorías
+        </h1>
+
+        <a href="{% url 'crear_categoria' %}"
+           class="create-product-btn">
+
+            Crear Categoría
+
+        </a>
+
+    </div>
+
+    <div class="products-card">
+
+        <table class="products-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for categoria in categorias %}
+
+                <tr>
+
+                    <td>
+                        {{ categoria.nombre }}
+                    </td>
+
+                    <td>
+                        {{ categoria.descripcion }}
+                    </td>
+
+                    <td>
+
+                        <div class="actions-group">
+
+                            <a href="{% url 'editar_categoria' categoria.id %}"
+                               class="edit-btn">
+
+                                Editar
+
+                            </a>
+
+                            <a href="{% url 'eliminar_categoria' categoria.id %}"
+                               class="delete-btn">
+
+                                Eliminar
+
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

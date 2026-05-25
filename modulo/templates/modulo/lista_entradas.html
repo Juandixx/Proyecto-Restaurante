@@ -1,0 +1,87 @@
+{% extends 'modulo/base.html' %}
+
+{% block title %}
+Entradas
+{% endblock %}
+
+{% block content %}
+
+<div class="products-page">
+
+    <div class="products-header">
+
+        <h1 class="page-title">
+            Entradas de Inventario
+        </h1>
+
+        <a href="{% url 'registrar_entrada' %}"
+           class="create-product-btn">
+
+            Registrar Entrada
+
+        </a>
+
+    </div>
+
+    <div class="products-card">
+
+        <table class="products-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Producto</th>
+                    <th>Proveedor</th>
+                    <th>Cantidad</th>
+                    <th>Precio Compra</th>
+                    <th>Usuario</th>
+                    <th>Fecha</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for entrada in entradas %}
+
+                <tr>
+
+                    <td>
+                        {{ entrada.producto.nombre }}
+                    </td>
+
+                    <td>
+                        {{ entrada.proveedor.nombre }}
+                    </td>
+
+                    <td>
+                        {{ entrada.cantidad }}
+                    </td>
+
+                    <td>
+                        ${{ entrada.precio_compra }}
+                    </td>
+
+                    <td>
+                        {{ entrada.usuario.username }}
+                    </td>
+
+                    <td>
+                        {{ entrada.fecha }}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

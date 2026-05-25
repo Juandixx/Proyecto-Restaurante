@@ -1,0 +1,79 @@
+{% extends 'modulo/auth_base.html' %}
+
+{% block title %}
+Iniciar Sesión
+{% endblock %}
+
+{% block content %}
+
+<div class="login-wrapper">
+
+    <div class="auth-card">
+
+        <h1 class="auth-title">
+            🍽 InventarioRest
+        </h1>
+
+        <p class="auth-subtitle">
+            Sistema de Inventario
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="input-group">
+
+                <label>
+                    Usuario
+                </label>
+
+                {{ formulario.username }}
+
+            </div>
+
+            <div class="input-group">
+
+                <label>
+                    Contraseña
+                </label>
+
+                {{ formulario.password }}
+
+            </div>
+
+            {% if formulario.non_field_errors %}
+
+            <div class="form-error">
+
+                {% for error in formulario.non_field_errors %}
+
+                    <p>{{ error }}</p>
+
+                {% endfor %}
+
+            </div>
+
+            {% endif %}
+
+            <button type="submit" class="auth-btn">
+
+                Iniciar Sesión
+
+            </button>
+
+        </form>
+
+        <div class="auth-footer">
+
+            <a href="{% url 'registro' %}">
+                ¿No tienes cuenta? Regístrate
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

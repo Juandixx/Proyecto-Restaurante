@@ -1,0 +1,92 @@
+{% extends 'modulo/base.html' %}
+
+{% block title %}
+Proveedores
+{% endblock %}
+
+{% block content %}
+
+<div class="products-page">
+
+    <div class="products-header">
+
+        <h1 class="page-title">
+            Proveedores
+        </h1>
+
+        <a href="{% url 'crear_proveedor' %}"
+           class="create-product-btn">
+
+            Crear Proveedor
+
+        </a>
+
+    </div>
+
+    <div class="products-card">
+
+        <table class="products-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Nombre</th>
+                    <th>Contacto</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Acciones</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for proveedor in proveedores %}
+
+                <tr>
+
+                    <td>{{ proveedor.nombre }}</td>
+
+                    <td>{{ proveedor.contacto }}</td>
+
+                    <td>{{ proveedor.telefono }}</td>
+
+                    <td>{{ proveedor.email }}</td>
+
+                    <td>
+
+                        <div class="actions-group">
+
+                            <a href="{% url 'editar_proveedor' proveedor.id %}"
+                               class="edit-btn">
+
+                                Editar
+
+                            </a>
+
+                            <a href="{% url 'eliminar_proveedor' proveedor.id %}"
+                               class="delete-btn">
+
+                                Eliminar
+
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
