@@ -10,7 +10,7 @@
 
 
 /* =========================
-   BODY
+    BODY
 ========================= */
 
 body{
@@ -56,6 +56,8 @@ body{
     font-weight: 700;
 
     color: white;
+
+    text-decoration: none;
 
 }
 
@@ -793,6 +795,8 @@ button:hover{
 
     display: flex;
 
+    flex-direction: column;
+
     justify-content: space-between;
 
     align-items: center;
@@ -1225,5 +1229,104 @@ button:hover{
     font-size: 14px;
 
     line-height: 1.6;
+
+}
+
+/* =========================
+   NAVBAR RIGHT
+========================= */
+
+.navbar-right{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+
+.welcome-text{
+
+    color: white;
+
+    font-size: 18px;
+
+}
+
+
+.welcome-text strong{
+
+    color: #a855f7;
+
+}
+
+
+/* =========================
+   DASHBOARD GRID
+========================= */
+
+.dashboard-grid{
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 25px;
+
+    margin-bottom: 40px;
+
+}
+
+
+/* =========================
+   DASHBOARD CARD
+========================= */
+
+.dashboard-card{
+
+    background: #0f172a;
+
+    border-radius: 24px;
+
+    padding: 40px 20px;
+
+    text-decoration: none;
+
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    transition: 0.3s;
+
+    text-align: center;
+
+}
+
+
+.dashboard-card:hover{
+
+    transform: translateY(-5px);
+
+    border-color: #a855f7;
+
+}
+
+
+.dashboard-card span{
+
+    font-size: 40px;
+
+    display: block;
+
+    margin-bottom: 15px;
+
+}
+
+
+.dashboard-card h3{
+
+    font-size: 22px;
 
 }

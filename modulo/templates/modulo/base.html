@@ -33,62 +33,37 @@
 
     <nav class="navbar">
 
-        <div class="logo">
+        <a
+            href="{% url 'dashboard' %}"
+            class="logo"
+        >
             🍽 InventarioRest
-        </div>
+        </a>
 
-        {% if user.is_authenticated %}
+        <div class="navbar-right">
 
-        <div class="nav-links">
+            <span class="welcome-text">
 
-            <a href="{% url 'dashboard' %}">
-                Inicio
-            </a>
+                Bienvenido,
 
-            <a href="{% url 'productos' %}">
-                Productos
-            </a>
+                <strong>
+                    {{ request.user.username }}
+                </strong>
 
-            <a href="{% url 'salidas' %}"
-            class="nav-link-btn">
+            </span>
 
-                Salidas
+            <div class="nav-links">
 
-            </a>
+                <a
+                    href="{% url 'logout' %}"
+                    class="logout-btn"
+                >
+                    Cerrar Sesión
+                </a>
 
-
-
-
-            {% if user.usuario.rol == 'admin' %}
-
-            <a href="{% url 'categorias' %}" class="nav-btn">
-                Categorías
-            </a>
-
-            <a href="{% url 'proveedores' %}" class="nav-link-btn">
-                Proveedores
-            </a>
-
-            <a href="{% url 'gestionar_roles' %}">
-                Gestionar Roles
-            </a>
-
-            <a href="{% url 'entradas' %}"
-            class="nav-link-btn">
-
-                Entradas
-
-            </a>
-
-            {% endif %}
-
-            <a href="{% url 'logout' %}" class="logout-btn">
-                Cerrar Sesión
-            </a>
+            </div>
 
         </div>
-
-        {% endif %}
 
     </nav>
 

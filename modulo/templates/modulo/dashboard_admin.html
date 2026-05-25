@@ -6,43 +6,92 @@ Dashboard Admin
 
 {% block content %}
 
-<h1 class="mb-4">
-    Panel Administrador
-</h1>
+<div class="dashboard-hero">
 
-<div class="row g-4">
+    <h1 class="dashboard-title">
+        Panel Administrador
+    </h1>
 
-    <div class="col-md-4">
+</div>
 
-        <div class="card shadow-sm p-4">
 
-            <h4>
-                Productos
-            </h4>
+<div class="dashboard-grid">
 
-            <a href="{% url 'productos' %}" class="btn btn-dark mt-3">
-                Ver Productos
-            </a>
+    <a href="{% url 'dashboard' %}" class="dashboard-card">
 
-        </div>
+        <span>🏠</span>
 
-    </div>
+        <h3>
+            Inicio
+        </h3>
 
-    <div class="col-md-4">
+    </a>
 
-        <div class="card shadow-sm p-4">
 
-            <h4>
-                Crear Producto
-            </h4>
+    <a href="{% url 'productos' %}" class="dashboard-card">
 
-            <a href="{% url 'crear_producto' %}" class="btn btn-success mt-3">
-                Crear
-            </a>
+        <span>📦</span>
 
-        </div>
+        <h3>
+            Productos
+        </h3>
 
-    </div>
+    </a>
+
+
+    <a href="{% url 'salidas' %}" class="dashboard-card">
+
+        <span>📤</span>
+
+        <h3>
+            Salidas
+        </h3>
+
+    </a>
+
+
+    <a href="{% url 'categorias' %}" class="dashboard-card">
+
+        <span>🏷️</span>
+
+        <h3>
+            Categorías
+        </h3>
+
+    </a>
+
+
+    <a href="{% url 'proveedores' %}" class="dashboard-card">
+
+        <span>🚚</span>
+
+        <h3>
+            Proveedores
+        </h3>
+
+    </a>
+
+
+    <a href="{% url 'gestionar_roles' %}" class="dashboard-card">
+
+        <span>🛡️</span>
+
+        <h3>
+            Gestionar Roles
+        </h3>
+
+    </a>
+
+
+    <a href="{% url 'entradas' %}" class="dashboard-card">
+
+        <span>📥</span>
+
+        <h3>
+            Entradas
+        </h3>
+
+    </a>
 
 </div>
 

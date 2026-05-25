@@ -35,6 +35,10 @@ Productos
                     <th>Stock</th>
                     <th>Categoría</th>
 
+                    {% if request.user.usuario.rol == 'admin' %}
+                        <th>Acciones</th>
+                    {% endif %}
+                    
                 </tr>
 
             </thead>
@@ -52,6 +56,33 @@ Productos
                     <td>{{ producto.stock_actual }}</td>
 
                     <td>{{ producto.categoria.nombre }}</td>
+
+                    {% if request.user.usuario.rol == 'admin' %}
+
+                        <td>
+
+                            <div class="actions-group">
+
+                                <a
+                                    href="{% url 'editar_producto' producto.id %}"
+                                    class="edit-btn"
+                                >
+                                    Editar
+                                </a>
+
+                                <a
+                                    href="{% url 'eliminar_producto' producto.id %}"
+                                    class="delete-btn"
+                                    onclick="return confirm('¿Seguro que deseas eliminar este producto?')"
+                                >
+                                    Eliminar
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    {% endif %}
 
                 </tr>
 

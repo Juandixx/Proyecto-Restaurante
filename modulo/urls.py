@@ -20,6 +20,18 @@ urlpatterns = [
     ),
 
     path(
+        'editar-producto/<int:producto_id>/',
+        views.editar_producto,
+        name='editar_producto'
+    ),
+
+    path(
+        'eliminar-producto/<int:producto_id>/',
+        views.eliminar_producto,
+        name='eliminar_producto'
+    ),
+
+    path(
         'gestionar-roles/',
         views.gestionar_roles,
         name='gestionar_roles'

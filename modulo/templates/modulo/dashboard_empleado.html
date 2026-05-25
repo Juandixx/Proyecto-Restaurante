@@ -6,18 +6,47 @@ Dashboard Empleado
 
 {% block content %}
 
-<h1 class="mb-4">
-    Panel Empleado
-</h1>
+<div class="dashboard-hero">
 
-<div class="card shadow-sm p-4">
+    <h1 class="dashboard-title">
+        Panel Empleado
+    </h1>
 
-    <h4>
-        Productos
-    </h4>
+</div>
 
-    <a href="{% url 'productos' %}" class="btn btn-dark mt-3">
-        Ver Productos
+
+<div class="dashboard-grid">
+
+    <a href="{% url 'dashboard' %}" class="dashboard-card">
+
+        <span>🏠</span>
+
+        <h3>
+            Inicio
+        </h3>
+
+    </a>
+
+
+    <a href="{% url 'productos' %}" class="dashboard-card">
+
+        <span>📦</span>
+
+        <h3>
+            Productos
+        </h3>
+
+    </a>
+
+
+    <a href="{% url 'salidas' %}" class="dashboard-card">
+
+        <span>📤</span>
+
+        <h3>
+            Salidas
+        </h3>
+
     </a>
 
 </div>

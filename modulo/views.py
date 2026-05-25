@@ -67,6 +67,67 @@ def crear_producto(request):
     )
 
 # =========================
+# EDITAR PRODUCTO
+# =========================
+
+@login_required
+def editar_producto(request, producto_id):
+
+    if request.user.usuario.rol != 'admin':
+
+        return redirect('dashboard')
+
+    producto = Producto.objects.get(id=producto_id)
+
+    if request.method == 'POST':
+
+        formulario = ProductoForm(
+            request.POST,
+            instance=producto
+        )
+
+        if formulario.is_valid():
+
+            formulario.save()
+
+            return redirect('productos')
+
+    else:
+
+        formulario = ProductoForm(instance=producto)
+
+    return render(
+
+        request,
+
+        'modulo/editar_producto.html',
+
+        {
+            'formulario': formulario
+        }
+
+    )
+
+
+# =========================
+# ELIMINAR PRODUCTO
+# =========================
+
+@login_required
+def eliminar_producto(request, producto_id):
+
+    if request.user.usuario.rol != 'admin':
+
+        return redirect('dashboard')
+
+    producto = Producto.objects.get(id=producto_id)
+
+    producto.delete()
+
+    return redirect('productos')
+
+
+# =========================
 # REGISTRO
 # =========================
 
