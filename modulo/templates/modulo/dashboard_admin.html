@@ -15,6 +15,35 @@ Dashboard Admin
 </div>
 
 
+
+{% if productos_stock_bajo %}
+
+<div class="stock-alert">
+
+    <h3>
+        Productos con stock bajo
+    </h3>
+
+    <ul>
+
+        {% for producto in productos_stock_bajo %}
+
+            <li>
+
+                <strong>{{ producto.nombre }}</strong>
+                → Stock actual: {{ producto.stock_actual }}
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endif %}
+
+
 <div class="dashboard-grid">
 
     <a href="{% url 'productos' %}" class="dashboard-card">
@@ -78,6 +107,17 @@ Dashboard Admin
 
         <h3>
             Entradas
+        </h3>
+
+    </a>
+
+
+    <a href="{% url 'crear_usuario' %}" class="dashboard-card">
+
+        <span>👤</span>
+
+        <h3>
+            Crear Usuarios
         </h3>
 
     </a>

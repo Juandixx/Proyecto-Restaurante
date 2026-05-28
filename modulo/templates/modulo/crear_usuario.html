@@ -1,0 +1,166 @@
+{% extends 'modulo/base.html' %}
+
+{% block title %}
+Crear Usuario
+{% endblock %}
+
+{% block content %}
+
+<div class="page-wrapper">
+
+    <div class="custom-card">
+
+        <div class="card-header">
+
+            <h2>
+                Crear Usuario
+            </h2>
+
+        </div>
+
+        <div class="card-content">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                <div class="form-group">
+
+                    <label>
+                        Usuario
+                    </label>
+
+                    {{ formulario.username }}
+
+                    {% if formulario.username.errors %}
+
+                        {% for error in formulario.username.errors %}
+
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Correo Electrónico
+                    </label>
+
+                    {{ formulario.email }}
+
+                    {% if formulario.email.errors %}
+
+                        {% for error in formulario.email.errors %}
+
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Contraseña
+                    </label>
+
+                    {{ formulario.password1 }}
+
+                    {% if formulario.password1.help_text %}
+
+                        <div class="password-help">
+
+                            {{ formulario.password1.help_text|safe }}
+
+                        </div>
+
+                    {% endif %}
+
+                    {% if formulario.password1.errors %}
+
+                        {% for error in formulario.password1.errors %}
+
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Confirmar Contraseña
+                    </label>
+
+                    {{ formulario.password2 }}
+
+                    {% if formulario.password2.errors %}
+
+                        {% for error in formulario.password2.errors %}
+
+                            <div class="form-error">
+                                {{ error }}
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+                </div>
+
+
+                <div class="button-group">
+
+                    <button type="submit"
+                            class="save-btn">
+
+                        Crear Usuario
+
+                    </button>
+
+                    <a href="{% url 'gestionar_roles' %}"
+                       class="cancel-btn">
+
+                        Cancelar
+
+                    </a>
+
+                    <a href="{% url 'dashboard' %}"
+                       class="cancel-btn">
+
+                        Volver a inicio
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

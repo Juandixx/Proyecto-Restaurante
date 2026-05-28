@@ -5,7 +5,7 @@ urlpatterns = [
 
     path('', views.iniciar_sesion, name='login'),
 
-    path('registro/', views.registro, name='registro'),
+    path('crear-usuario/', views.crear_usuario, name='crear_usuario'),
 
     path('dashboard/', views.dashboard, name='dashboard'),
 
@@ -128,21 +128,9 @@ urlpatterns = [
     ),
 
     path(
-        'eliminar-entrada/<int:entrada_id>/',
-        views.eliminar_entrada,
-        name='eliminar_entrada'
-    ),
-
-    path(
         'editar-salida/<int:salida_id>/',
         views.editar_salida,
         name='editar_salida'
-    ),
-
-    path(
-        'eliminar-salida/<int:salida_id>/',
-        views.eliminar_salida,
-        name='eliminar_salida'
     ),
 
 ]

@@ -85,16 +85,6 @@ Salidas
                                 Editar
                             </a>
 
-                            {% if request.user.usuario.rol == 'admin' %}
-                            <a
-                                href="{% url 'eliminar_salida' salida.id %}"
-                                class="delete-btn"
-                                onclick="return confirm('¿Seguro que deseas eliminar esta salida?')"
-                            >
-                                Eliminar
-                            </a>
-                            {% endif %}
-
                         </div>
 
                     </td>

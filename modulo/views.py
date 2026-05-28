@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Producto
+from .models import Producto, STOCK_MINIMO_GLOBAL
 from .forms import ProductoForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
@@ -122,10 +122,9 @@ def eliminar_producto(request, producto_id):
 
 
 # =========================
-# REGISTRO
+# CREAR USUARIO
 # =========================
-
-def registro(request):
+def crear_usuario(request):
 
     if request.method == 'POST':
 
@@ -140,21 +139,15 @@ def registro(request):
                 rol='empleado'
             )
 
-            login(request, user)
-
-            return redirect('dashboard')
+            return redirect('gestionar_roles')
 
     else:
 
         formulario = RegistroForm()
 
-    return render(
-        request,
-        'modulo/registro.html',
-        {
-            'formulario': formulario
-        }
-    )
+    return render(request, 'modulo/crear_usuario.html', {
+        'formulario': formulario
+    })
 
 
 # =========================
@@ -207,16 +200,28 @@ def dashboard(request):
 
     usuario = request.user.usuario
 
+    productos_stock_bajo = Producto.objects.filter(
+        stock_actual__lte=STOCK_MINIMO_GLOBAL
+    )
+
+    contexto = {
+
+        'productos_stock_bajo': productos_stock_bajo
+
+    }
+
     if usuario.rol == 'admin':
 
         return render(
             request,
-            'modulo/dashboard_admin.html'
+            'modulo/dashboard_admin.html',
+            contexto
         )
 
     return render(
         request,
-        'modulo/dashboard_empleado.html'
+        'modulo/dashboard_empleado.html',
+        contexto
     )
 
 
@@ -608,20 +613,6 @@ def editar_salida(request, salida_id):
         }
     )
 
-@login_required
-def eliminar_salida(request, salida_id):
-
-    if request.user.usuario.rol != 'admin':
-        return redirect('dashboard')
-
-    salida = get_object_or_404(
-        SalidaProducto,
-        id=salida_id
-    )
-
-    salida.delete()
-
-    return redirect('salidas')
 
 @login_required
 def lista_salidas(request):
@@ -711,21 +702,6 @@ def editar_entrada(request, entrada_id):
             'formulario': formulario
         }
     )
-
-@login_required
-def eliminar_entrada(request, entrada_id):
-
-    if request.user.usuario.rol != 'admin':
-        return redirect('dashboard')
-
-    entrada = get_object_or_404(
-        EntradaProducto,
-        id=entrada_id
-    )
-
-    entrada.delete()
-
-    return redirect('entradas')
 
 
 @login_required

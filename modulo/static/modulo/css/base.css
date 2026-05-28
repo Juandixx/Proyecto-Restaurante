@@ -1345,3 +1345,39 @@ button:hover{
     opacity: 0.9;
     transform: translateY(-2px);
 }
+
+.stock-alert {
+
+    background-color: #7f1d1d;
+    border-left: 6px solid #ef4444;
+    color: white;
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    margin-bottom: 30px;
+
+}
+
+.stock-alert h3 {
+
+    margin-bottom: 15px;
+
+    font-size: 24px;
+
+}
+
+.stock-alert ul {
+
+    padding-left: 20px;
+
+}
+
+.stock-alert li {
+
+    margin-bottom: 10px;
+
+    font-size: 18px;
+
+}
